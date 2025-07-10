@@ -20,7 +20,7 @@ function ButtonRemoteData({ doc }) {
         >
           <Stack direction="column">
             <Typography variant="body1">All Data</Typography>
-            <Typography variant="caption">{remoteDataDirUrl} PDF</Typography>
+            <Typography variant="caption">{remoteDataDirUrl}</Typography>
           </Stack>
         </ListItemButton>
       </ListItem>
@@ -45,8 +45,10 @@ export default function LangSourcesView({ doc, langCodeToSourceUrl }) {
               sx={{ textDecoration: "none", color: lang.color }}
             >
               <Stack direction="column">
-                <Typography variant="body1">{lang.name} PDF</Typography>
-                <Typography variant="caption">{sourceUrl} PDF</Typography>
+                <Typography variant="body1">
+                  {lang.name} PDF (Original)
+                </Typography>
+                <Typography variant="caption">{sourceUrl}</Typography>
               </Stack>
             </ListItemButton>
           </ListItem>
