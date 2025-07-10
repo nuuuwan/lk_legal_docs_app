@@ -4,6 +4,7 @@ import {
   Typography,
   List,
   Divider,
+  Stack,
   ListItem,
   ListItemButton,
 } from "@mui/material";
@@ -56,24 +57,6 @@ function DocRemoteTxtView({ doc, lang }) {
   );
 }
 
-function ButtonRemoteData({ doc }) {
-  const remoteDataDirUrl = doc.remoteDataDirUrl;
-  return (
-    <List>
-      <ListItem>
-        <ListItemButton
-          href={remoteDataDirUrl}
-          target="_blank"
-          rel="noopener"
-          sx={{ textDecoration: "none" }}
-        >
-          <Typography variant="body1">All Data</Typography>
-        </ListItemButton>
-      </ListItem>
-    </List>
-  );
-}
-
 function DocRemoteDataView({ doc }) {
   return (
     <Box>
@@ -91,9 +74,7 @@ export default function DocView({ doc }) {
       <Box sx={{ m: 1 }}>
         <DocMetadataView doc={doc} largeTitle={true} />
         <DocRemoteDataView doc={doc} />
-        <Typography variant="h5">More Info</Typography>
         <DocRemoteMetadataView doc={doc} />
-        <ButtonRemoteData doc={doc} />
       </Box>
     </Box>
   );

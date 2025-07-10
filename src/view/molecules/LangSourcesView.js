@@ -1,7 +1,34 @@
-import { List, ListItem, ListItemButton, Typography } from "@mui/material";
+import {
+  List,
+  ListItem,
+  ListItemButton,
+  Typography,
+  Stack,
+} from "@mui/material";
 import { Lang } from "../../nonview/utils";
 
-export default function LangSourcesView({ langCodeToSourceUrl }) {
+function ButtonRemoteData({ doc }) {
+  const remoteDataDirUrl = doc.remoteDataDirUrl;
+  return (
+    <List>
+      <ListItem>
+        <ListItemButton
+          href={remoteDataDirUrl}
+          target="_blank"
+          rel="noopener"
+          sx={{ textDecoration: "none" }}
+        >
+          <Stack direction="column">
+            <Typography variant="body1">All Data</Typography>
+            <Typography variant="caption">{remoteDataDirUrl} PDF</Typography>
+          </Stack>
+        </ListItemButton>
+      </ListItem>
+    </List>
+  );
+}
+
+export default function LangSourcesView({ doc, langCodeToSourceUrl }) {
   return (
     <List>
       {Lang.listAll().map(function (lang) {
@@ -17,11 +44,15 @@ export default function LangSourcesView({ langCodeToSourceUrl }) {
               rel="noopener"
               sx={{ textDecoration: "none", color: lang.color }}
             >
-              <Typography variant="body1">{lang.name} PDF</Typography>
+              <Stack direction="column">
+                <Typography variant="body1">{lang.name} PDF</Typography>
+                <Typography variant="caption">{sourceUrl} PDF</Typography>
+              </Stack>
             </ListItemButton>
           </ListItem>
         );
-      })}
+      })}{" "}
+      <ButtonRemoteData doc={doc} />
     </List>
   );
 }

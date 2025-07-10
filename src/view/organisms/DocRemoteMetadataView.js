@@ -19,6 +19,7 @@ export default function DocRemoteMetadataView({ doc }) {
 
   return (
     <LangSourcesView
+      doc={doc}
       langCodeToSourceUrl={remoteMetadata["lang_to_source_url"]}
     />
   );
