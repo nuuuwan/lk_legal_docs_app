@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography, Avatar } from "@mui/material";
 import { STYLE } from "../../nonview/constants";
 export default function DocMetadataView({ doc }) {
   return (
@@ -7,7 +7,9 @@ export default function DocMetadataView({ doc }) {
         {doc.date}
       </Typography>
       <Stack direction="row" spacing={1} alignItems="center">
-        <Typography variant="subtitle1">{doc.docType.emoji}</Typography>
+        <Avatar sx={{ bgcolor: STYLE.COLOR.LIGHTEST }}>
+          {doc.docType.emoji}
+        </Avatar>
         <Typography variant="subtitle1" color={STYLE.COLOR.LIGHT}>
           {doc.docType.name}
         </Typography>
