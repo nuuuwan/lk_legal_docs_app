@@ -17,8 +17,6 @@ export default function DocRemoteMetadataView({ doc }) {
     return <CircularProgress />;
   }
 
-  console.debug({ remoteMetadata });
-
   return (
     <LangSourcesView
       langCodeToSourceUrl={remoteMetadata["lang_to_source_url"]}
