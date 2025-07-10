@@ -8,7 +8,7 @@ export default class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      docID: "2444-09",
+      docID: undefined,
       docList: [],
       searchKey: "",
     };
