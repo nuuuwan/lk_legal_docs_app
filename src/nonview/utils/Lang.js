@@ -7,7 +7,7 @@ class Lang {
   }
 
   static listAll() {
-    return [Lang.SI, Lang.TA, Lang.EN];
+    return [Lang.EN, Lang.SI, Lang.TA];
   }
 
   static fromCode(code) {

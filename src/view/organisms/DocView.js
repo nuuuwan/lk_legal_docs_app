@@ -31,7 +31,7 @@ function DocRemoteTxtView({ doc, lang }) {
 
   return (
     <Box>
-      <Typography variant="h5" color={lang.color}>
+      <Typography variant="h5" color={lang.color} sx={{ mt: 2 }}>
         {lang.name} Raw-Text
       </Typography>
       {lines.map(function (line, iLine) {
@@ -89,7 +89,7 @@ export default function DocView({ doc }) {
     <Box sx={{ m: 1, p: 1 }}>
       <ReturnToSearchButton />
       <Box sx={{ m: 1 }}>
-        <DocMetadataView doc={doc} />
+        <DocMetadataView doc={doc} largeTitle={true} />
         <DocRemoteDataView doc={doc} />
         <Typography variant="h5">More Info</Typography>
         <DocRemoteMetadataView doc={doc} />

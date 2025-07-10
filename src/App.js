@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -26,8 +26,8 @@ export default class App extends Component {
     return (
       <ThemeProvider theme={THEME}>
         <Box sx={{ width: 640, margin: "0 auto" }}>
-          <VersionView />
           <HomePage />
+          <VersionView />
         </Box>
       </ThemeProvider>
     );

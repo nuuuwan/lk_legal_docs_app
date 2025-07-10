@@ -1,7 +1,7 @@
 let STYLE = {};
 
 STYLE.FONT = {
-  SIZE: 15,
+  SIZE: 14,
   FAMILY: "Ubuntu",
 };
 
