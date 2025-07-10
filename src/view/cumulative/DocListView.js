@@ -1,13 +1,18 @@
 import { List, ListItemButton } from "@mui/material";
 import DocView from "./DocView";
-export default function DocListView({ docList }) {
+export default function DocListView({ docList, onClickDoc }) {
   return (
     <List>
-      {docList.map((doc) => (
-        <ListItemButton key={doc.id}>
-          <DocView doc={doc} />
-        </ListItemButton>
-      ))}
+      {docList.map(function (doc) {
+        const onClick = function (e) {
+          onClickDoc(doc);
+        };
+        return (
+          <ListItemButton key={doc.id} onClick={onClick}>
+            <DocView doc={doc} />
+          </ListItemButton>
+        );
+      })}
     </List>
   );
 }

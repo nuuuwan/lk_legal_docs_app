@@ -21,7 +21,9 @@ export default class HomePage extends Component {
     this.setState({ docList, searchKey });
   }
 
-  renderInfo() {}
+  async onClickDoc(doc) {
+    console.debug(doc);
+  }
 
   render() {
     const { docList, searchKey } = this.state;
@@ -32,8 +34,11 @@ export default class HomePage extends Component {
           searchKey={searchKey}
           onChange={this.update.bind(this)}
         />
-        {this.renderInfo()}
-        <DocListView docList={docList} />
+
+        <DocListView
+          docList={docList}
+          onClickDoc={this.onClickDoc.bind(this)}
+        />
       </Box>
     );
   }
