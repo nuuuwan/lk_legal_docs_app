@@ -47,7 +47,7 @@ function SearchBoxInfo({ searchKey, docList }) {
   return (
     <Box sx={{ m: 1 }}>
       <Alert severity="info">
-        {n} Legal Documents matched "{searchKey}".
+        {n} Legal Document(s) matched "{searchKey}".
       </Alert>
     </Box>
   );
