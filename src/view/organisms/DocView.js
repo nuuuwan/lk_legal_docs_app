@@ -73,8 +73,8 @@ export default function DocView({ doc }) {
       <ReturnToSearchButton />
       <Box sx={{ m: 1 }}>
         <DocMetadataView doc={doc} largeTitle={true} />
-        <DocRemoteDataView doc={doc} />
         <DocRemoteMetadataView doc={doc} />
+        <DocRemoteDataView doc={doc} />
       </Box>
     </Box>
   );
