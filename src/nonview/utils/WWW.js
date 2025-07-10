@@ -1,9 +1,10 @@
+import Cache from "./Cache.js";
 export default class WWW {
   constructor(url) {
     this.url = url;
   }
 
-  async json() {
+  async jsonHot() {
     try {
       const response = await fetch(this.url);
       if (!response.ok) {
@@ -16,7 +17,14 @@ export default class WWW {
     }
   }
 
-  async text() {
+  async json() {
+    return await Cache.get(
+      this.url + ".json",
+      async () => await this.jsonHot(),
+    );
+  }
+
+  async textHot() {
     try {
       const response = await fetch(this.url);
       if (!response.ok) {
@@ -27,5 +35,12 @@ export default class WWW {
       console.error("Error fetching text:", error);
       return null;
     }
+  }
+
+  async text() {
+    return await Cache.get(
+      this.url + ".text",
+      async () => await this.textHot(),
+    );
   }
 }
