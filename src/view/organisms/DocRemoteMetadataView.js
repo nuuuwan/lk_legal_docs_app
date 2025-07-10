@@ -1,4 +1,4 @@
-import { CircularProgress, Box } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import { LangSourcesView } from "../molecules";
 

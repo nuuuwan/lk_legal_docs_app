@@ -22,7 +22,7 @@ export default class Doc {
     let docList = data.map(Doc.fromDict);
     if (searchKey && searchKey.length >= 3) {
       docList = docList.filter((doc) =>
-        doc.description.toLowerCase().includes(searchKey.toLowerCase())
+        doc.description.toLowerCase().includes(searchKey.toLowerCase()),
       );
     }
 

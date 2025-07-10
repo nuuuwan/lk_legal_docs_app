@@ -26,8 +26,8 @@ export default class App extends Component {
     return (
       <ThemeProvider theme={THEME}>
         <Box sx={{ width: 640, margin: "0 auto" }}>
-          <HomePage />
           <VersionView />
+          <HomePage />
         </Box>
       </ThemeProvider>
     );
