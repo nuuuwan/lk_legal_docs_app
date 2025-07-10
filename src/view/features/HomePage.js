@@ -1,14 +1,16 @@
 import { Component } from "react";
-import { Box, List, ListItem, ListItemText, Typography } from "@mui/material";
+import { Box, List, ListItem, Typography } from "@mui/material";
 import { DocMetadata } from "../../nonview/core";
 
 function ListItemDocView({ doc }) {
   return (
     <ListItem>
-      <Box>
-        <Typography variant="subtitle1">{doc.doc_type_name}</Typography>
+      <Box sx={{ bgcolor: "#eee", p: 1, borderRadius: 1, width: "100%" }}>
+        <Typography variant="subtitle2">{doc.date}</Typography>
+        <Typography variant="subtitle1">
+          {doc.docType.emoji + " " + doc.docType.name}
+        </Typography>
         <Typography variant="h6">{doc.description}</Typography>
-        <Typography variant="subtitle1">{doc.date}</Typography>
       </Box>
     </ListItem>
   );
