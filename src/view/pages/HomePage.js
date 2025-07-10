@@ -12,7 +12,7 @@ export default class HomePage extends Component {
     this.state = {
       docID: undefined,
       doc: undefined,
-      docList: [],
+      docList: undefined,
       searchKey: "",
     };
   }
@@ -51,7 +51,7 @@ export default class HomePage extends Component {
   render() {
     const { docList, doc } = this.state;
 
-    if (!docList || docList.length === 0) {
+    if (docList === undefined) {
       return <CircularProgress />;
     }
 

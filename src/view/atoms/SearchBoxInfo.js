@@ -15,7 +15,8 @@ export default function SearchBoxInfo({ searchKey, docList }) {
   return (
     <Box sx={{ m: 1 }}>
       <Alert severity="info">
-        {n} Legal Document(s) matched "{searchKey}". Click for details.
+        {n} Legal Document(s) matched "{searchKey}".{" "}
+        {n > 0 ? "Click for details." : ""}
       </Alert>
     </Box>
   );

@@ -9,6 +9,7 @@ STYLE.COLOR = {
   LIGHT: "#888",
   LIGHTER: "#ccc",
   LIGHTEST: "#eee",
+
   SL_FLAG: {
     MAROON: "#8D153A",
     ORANGE: "#EB7400",
