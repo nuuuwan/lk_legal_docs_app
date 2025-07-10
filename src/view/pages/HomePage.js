@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-import { DocMetadata } from "../../nonview/core";
+import { Doc } from "../../nonview/core";
 import { DocView, SearchView } from "../organisms";
 
 export default class HomePage extends Component {
@@ -18,7 +18,7 @@ export default class HomePage extends Component {
   }
 
   async update(searchKey) {
-    const docList = await DocMetadata.listAllAsync(searchKey);
+    const docList = await Doc.listAllAsync(searchKey);
     this.setState({ docList, searchKey });
   }
 
