@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Typography,
-  List,
-  Divider,
-  Stack,
-  ListItem,
-  ListItemButton,
-} from "@mui/material";
+import { Box, Typography, Divider } from "@mui/material";
 import { STYLE } from "../../nonview/constants";
 import { Lang } from "../../nonview/utils";
 import { DocMetadataView, ReturnToSearchButton } from "../atoms";
