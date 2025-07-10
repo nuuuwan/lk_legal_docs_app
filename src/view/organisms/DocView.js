@@ -1,7 +1,88 @@
-import { Box } from "@mui/material";
-
+import React from "react";
+import {
+  Box,
+  Typography,
+  List,
+  Divider,
+  ListItem,
+  ListItemButton,
+} from "@mui/material";
+import { STYLE } from "../../nonview/constants";
+import { Lang } from "../../nonview/utils";
 import { DocMetadataView, ReturnToSearchButton } from "../atoms";
 import DocRemoteMetadataView from "./DocRemoteMetadataView";
+
+function DocRemoteTxtView({ doc, lang }) {
+  const [remoteTxt, setRemoteTxt] = React.useState("");
+
+  React.useEffect(() => {
+    async function fetchRemoteTxt() {
+      const remoteTxt = await doc.getRemoteTxt(lang.code);
+      setRemoteTxt(remoteTxt);
+    }
+    fetchRemoteTxt();
+  }, [doc, lang]);
+
+  if (!remoteTxt) {
+    return null;
+  }
+
+  const lines = remoteTxt.split("\n");
+
+  return (
+    <Box>
+      <Typography variant="h5" color={lang.color}>
+        {lang.name} Raw-Text
+      </Typography>
+      {lines.map(function (line, iLine) {
+        if (line.startsWith("<!-- page ") && line.endsWith(" -->")) {
+          const pageNum = line.substring(10, line.length - 4);
+          return (
+            <Box key={iLine + "-page"}>
+              <Divider />
+              <Typography variant="caption" color={STYLE.COLOR.LIGHTER}>
+                {"(Page " + pageNum + ")"}
+              </Typography>
+            </Box>
+          );
+        }
+        return (
+          <Typography key={iLine} variant="body2" sx={{ p: 1 }}>
+            {line}
+          </Typography>
+        );
+      })}
+    </Box>
+  );
+}
+
+function ButtonRemoteData({ doc }) {
+  const remoteDataDirUrl = doc.remoteDataDirUrl;
+  return (
+    <List>
+      <ListItem>
+        <ListItemButton
+          href={remoteDataDirUrl}
+          target="_blank"
+          rel="noopener"
+          sx={{ textDecoration: "none" }}
+        >
+          <Typography variant="body1">All Data</Typography>
+        </ListItemButton>
+      </ListItem>
+    </List>
+  );
+}
+
+function DocRemoteDataView({ doc }) {
+  return (
+    <Box>
+      {Lang.listAll().map(function (lang) {
+        return <DocRemoteTxtView key={lang.code} doc={doc} lang={lang} />;
+      })}
+    </Box>
+  );
+}
 
 export default function DocView({ doc }) {
   return (
@@ -9,7 +90,10 @@ export default function DocView({ doc }) {
       <ReturnToSearchButton />
       <Box sx={{ m: 1 }}>
         <DocMetadataView doc={doc} />
+        <DocRemoteDataView doc={doc} />
+        <Typography variant="h5">More Info</Typography>
         <DocRemoteMetadataView doc={doc} />
+        <ButtonRemoteData doc={doc} />
       </Box>
     </Box>
   );

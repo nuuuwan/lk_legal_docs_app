@@ -59,8 +59,16 @@ export default class Doc {
     );
   }
 
-  async getRemoteTxt() {
-    const urlTxt = this.remoteDataURLBase + "/en.txt";
+  async getRemoteTxt(langCode) {
+    const urlTxt = this.remoteDataURLBase + `/${langCode}.txt`;
     return await new WWW(urlTxt).text();
+  }
+
+  get remoteDataDirUrl() {
+    return (
+      "https://github.com" +
+      "/nuuuwan/lk_legal_docs_data/tree/main" +
+      `/data/${this.docTypeName}/${this.year}/${this.id}`
+    );
   }
 }

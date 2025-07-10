@@ -12,7 +12,7 @@ export default class WWW {
       return await response.json();
     } catch (error) {
       console.error("Error fetching JSON:", error);
-      throw error;
+      return null;
     }
   }
 
@@ -25,7 +25,7 @@ export default class WWW {
       return await response.text();
     } catch (error) {
       console.error("Error fetching text:", error);
-      throw error;
+      return null;
     }
   }
 }
