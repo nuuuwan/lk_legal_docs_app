@@ -22,7 +22,7 @@ export default class Doc {
     let docList = data.map(Doc.fromDict);
     if (searchKey && searchKey.length >= 3) {
       docList = docList.filter((doc) =>
-        doc.description.toLowerCase().includes(searchKey.toLowerCase()),
+        doc.description.toLowerCase().includes(searchKey.toLowerCase())
       );
     }
 
@@ -36,6 +36,8 @@ export default class Doc {
     return this.date.substring(0, 4);
   }
 
+  // Remote Metadata
+
   get remoteMetadataURL() {
     return (
       "https://raw.githubusercontent.com" +
@@ -46,5 +48,19 @@ export default class Doc {
 
   async getRemoteMetadata() {
     return await new WWW(this.remoteMetadataURL).json();
+  }
+
+  // Remote Data
+  get remoteDataURLBase() {
+    return (
+      "https://raw.githubusercontent.com" +
+      "/nuuuwan/lk_legal_docs_data/refs/heads/main" +
+      `/data/${this.docTypeName}/${this.year}/${this.id}`
+    );
+  }
+
+  async getRemoteTxt() {
+    const urlTxt = this.remoteDataURLBase + "/en.txt";
+    return await new WWW(urlTxt).text();
   }
 }
