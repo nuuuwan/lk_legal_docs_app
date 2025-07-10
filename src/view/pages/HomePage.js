@@ -2,12 +2,13 @@ import { Component } from "react";
 
 import { Doc } from "../../nonview/core";
 import { DocView, SearchView } from "../organisms";
+import { CircularProgress } from "@mui/material";
 
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      docID: undefined,
+      docID: "2444-09",
       docList: [],
       searchKey: "",
     };
@@ -27,11 +28,17 @@ export default class HomePage extends Component {
   }
 
   render() {
-    const { docID } = this.state;
-    const doc = this.state.docList.find((doc) => doc.id === docID);
+    const { docID, docList } = this.state;
+
+    if (!docList || docList.length === 0) {
+      return <CircularProgress />;
+    }
+
+    const doc = docList.find((doc) => doc.id === docID);
     if (docID) {
       return <DocView doc={doc} />;
     }
+
     return (
       <SearchView
         docList={this.state.docList}

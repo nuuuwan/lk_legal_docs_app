@@ -13,10 +13,6 @@ export default class Doc {
     this.description = description;
   }
 
-  get docType() {
-    return DocType.fromDocTypeName(this.docTypeName);
-  }
-
   static fromDict(d) {
     return new Doc(d["doc_type_name"], d["id"], d["date"], d["description"]);
   }
@@ -26,10 +22,29 @@ export default class Doc {
     let docList = data.map(Doc.fromDict);
     if (searchKey && searchKey.length >= 3) {
       docList = docList.filter((doc) =>
-        doc.description.toLowerCase().includes(searchKey.toLowerCase())
+        doc.description.toLowerCase().includes(searchKey.toLowerCase()),
       );
     }
 
     return docList;
+  }
+  get docType() {
+    return DocType.fromDocTypeName(this.docTypeName);
+  }
+
+  get year() {
+    return this.date.substring(0, 4);
+  }
+
+  get remoteMetadataURL() {
+    return (
+      "https://raw.githubusercontent.com" +
+      "/nuuuwan/lk_legal_docs/refs/heads/main" +
+      `/data/${this.docTypeName}/${this.year}/${this.id}/metadata.json`
+    );
+  }
+
+  async getRemoteMetadata() {
+    return await new WWW(this.remoteMetadataURL).json();
   }
 }
