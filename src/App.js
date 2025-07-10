@@ -6,6 +6,7 @@ import { STYLE } from "./nonview/constants";
 import { Box } from "@mui/material";
 
 import { HomePage } from "./view/features";
+import { VersionView } from "./view/base";
 
 const THEME = createTheme({
   typography: {
@@ -26,6 +27,7 @@ export default class App extends Component {
       <ThemeProvider theme={THEME}>
         <Box sx={{ width: 640, margin: "0 auto" }}>
           <HomePage />
+          <VersionView />
         </Box>
       </ThemeProvider>
     );
