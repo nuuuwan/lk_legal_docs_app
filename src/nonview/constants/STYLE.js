@@ -5,4 +5,9 @@ STYLE.FONT = {
   FAMILY: "Ubuntu",
 };
 
+STYLE.COLOR = {
+  LIGHT: "#888",
+  LIGHTER: "#ccc",
+};
+
 export default STYLE;
