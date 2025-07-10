@@ -1,5 +1,5 @@
 import { Box, TextField } from "@mui/material";
-import SearchBoxInfo from "./SearchBoxInfo";
+import SearchBoxInfo from "../atoms/SearchBoxInfo";
 export default function SearchBox({ searchKey, docList, onChange }) {
   return (
     <Box sx={{ m: 1, p: 1 }}>

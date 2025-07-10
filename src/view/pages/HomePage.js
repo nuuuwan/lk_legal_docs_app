@@ -1,10 +1,7 @@
 import { Component } from "react";
-import { Box } from "@mui/material";
-import { DocMetadata } from "../../nonview/core";
-import { SearchBox, DocListView } from "../cumulative";
 
-import DocView from "./DocView";
-import SearchView from "./SearchView";
+import { DocMetadata } from "../../nonview/core";
+import { DocView, SearchView } from "../organisms";
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -27,29 +24,6 @@ export default class HomePage extends Component {
 
   async onClickDoc(doc) {
     this.setState({ docID: doc.id });
-  }
-
-  renderSearchView() {
-    const { docList, searchKey } = this.state;
-    return (
-      <Box>
-        <SearchBox
-          docList={docList}
-          searchKey={searchKey}
-          onChange={this.update.bind(this)}
-        />
-
-        <DocListView
-          docList={docList}
-          onClickDoc={this.onClickDoc.bind(this)}
-        />
-      </Box>
-    );
-  }
-
-  renderDocView() {
-    const doc = this.state.docList.find((doc) => doc.id === this.state.docID);
-    return JSON.stringify(doc, null, 2);
   }
 
   render() {

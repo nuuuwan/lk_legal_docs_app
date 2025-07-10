@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { SearchBox, DocListView } from "../cumulative";
+import { SearchBox, DocListView } from "../molecules";
 
 export default function SearchView({
   docList,

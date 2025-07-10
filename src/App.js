@@ -5,8 +5,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { STYLE } from "./nonview/constants";
 import { Box } from "@mui/material";
 
-import { HomePage } from "./view/features";
-import { VersionView } from "./view/base";
+import { HomePage } from "./view/pages";
+import { VersionView } from "./view/atoms";
 
 const THEME = createTheme({
   typography: {

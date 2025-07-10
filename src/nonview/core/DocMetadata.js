@@ -1,5 +1,5 @@
-import { WWW } from "../base";
-import DocType from "../core/DocType.js";
+import { WWW } from "../utils";
+import DocType from "./DocType.js";
 export default class DocMetadata {
   static URL_DOCS_ALL =
     "https://raw.githubusercontent.com" +

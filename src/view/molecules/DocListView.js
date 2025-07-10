@@ -1,5 +1,5 @@
 import { List, ListItemButton } from "@mui/material";
-import DocMetadataView from "./DocMetadataView";
+import { DocMetadataView } from "../atoms";
 export default function DocListView({ docList, onClickDoc }) {
   return (
     <List>
