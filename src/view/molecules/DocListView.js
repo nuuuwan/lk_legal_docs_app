@@ -5,7 +5,7 @@ export default function DocListView({ docList, onClickDoc }) {
     <List>
       {docList.map(function (doc) {
         const onClick = function (e) {
-          onClickDoc(doc);
+          onClickDoc(doc.id);
         };
         return (
           <ListItemButton key={doc.id} onClick={onClick}>
