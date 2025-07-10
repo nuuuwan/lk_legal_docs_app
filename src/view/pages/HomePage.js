@@ -6,6 +6,7 @@ import { DocView, SearchView } from "../organisms";
 import { CircularProgress } from "@mui/material";
 
 export default class HomePage extends Component {
+  static MAX_N_DOCS_DISPLAY = 100;
   constructor(props) {
     super(props);
 
@@ -61,7 +62,7 @@ export default class HomePage extends Component {
 
     return (
       <SearchView
-        docList={this.state.docList}
+        docList={this.state.docList.slice(0, HomePage.MAX_N_DOCS_DISPLAY)}
         searchKey={this.state.searchKey}
         onChangeSearchKey={this.onChangeSearchKey.bind(this)}
         onClickDoc={this.onClickDoc.bind(this)}

@@ -4,7 +4,7 @@ export default class Doc {
   static URL_DOCS_ALL =
     "https://raw.githubusercontent.com" +
     "/nuuuwan/lk_legal_docs_data/refs/heads/main" +
-    "/latest-100.json";
+    "/all.json";
 
   constructor(docTypeName, id, date, description) {
     this.docTypeName = docTypeName;
@@ -22,7 +22,7 @@ export default class Doc {
     let docList = data.map(Doc.fromDict);
     if (searchKey && searchKey.length >= 3) {
       docList = docList.filter((doc) =>
-        doc.description.toLowerCase().includes(searchKey.toLowerCase()),
+        doc.description.toLowerCase().includes(searchKey.toLowerCase())
       );
     }
 
