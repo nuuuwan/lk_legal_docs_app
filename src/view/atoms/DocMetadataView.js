@@ -19,7 +19,7 @@ export default function DocMetadataView({ doc, largeTitle }) {
           {doc.id}
         </Typography>
       </Stack>
-      <Typography variant={largeTitle ? "h4" : "body1"}>
+      <Typography variant={largeTitle ? "h4" : "h6"}>
         {doc.description}
       </Typography>
     </Box>

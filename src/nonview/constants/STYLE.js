@@ -1,8 +1,8 @@
 let STYLE = {};
 
 STYLE.FONT = {
-  SIZE: 14,
-  FAMILY: "Ubuntu",
+  SIZE: 16,
+  FAMILY: "Noto Sans",
 };
 
 STYLE.COLOR = {
