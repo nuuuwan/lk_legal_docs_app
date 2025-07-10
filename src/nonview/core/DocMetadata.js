@@ -22,20 +22,19 @@ export default class DocMetadata {
       d["doc_type_name"],
       d["id"],
       d["date"],
-      d["description"],
+      d["description"]
     );
   }
 
   static async listAllAsync(searchKey) {
-    console.debug({ searchKey });
     const data = await new WWW(DocMetadata.URL_DOCS_ALL).json();
     let docList = data.map(DocMetadata.fromDict);
     if (searchKey && searchKey.length >= 3) {
       docList = docList.filter((doc) =>
-        doc.description.toLowerCase().includes(searchKey.toLowerCase()),
+        doc.description.toLowerCase().includes(searchKey.toLowerCase())
       );
     }
-    console.debug("n", docList.length, "docs found");
+
     return docList;
   }
 }
