@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 
-export default function DocView({ doc }) {
+export default function DocMetadataView({ doc }) {
   return (
     <Box>
       <Typography variant="subtitle2">{doc.date}</Typography>

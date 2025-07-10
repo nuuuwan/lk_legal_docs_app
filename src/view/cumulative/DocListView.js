@@ -1,5 +1,5 @@
 import { List, ListItemButton } from "@mui/material";
-import DocView from "./DocView";
+import DocMetadataView from "./DocMetadataView";
 export default function DocListView({ docList, onClickDoc }) {
   return (
     <List>
@@ -9,7 +9,7 @@ export default function DocListView({ docList, onClickDoc }) {
         };
         return (
           <ListItemButton key={doc.id} onClick={onClick}>
-            <DocView doc={doc} />
+            <DocMetadataView doc={doc} />
           </ListItemButton>
         );
       })}
