@@ -17,7 +17,7 @@ export default function LangSourcesView({ langCodeToSourceUrl }) {
               rel="noopener"
               sx={{ textDecoration: "none", color: lang.color }}
             >
-              <Typography variant="body1">{lang.name} Full-Text</Typography>
+              <Typography variant="body1">{lang.name} PDF</Typography>
             </ListItemButton>
           </ListItem>
         );
