@@ -1,2 +1,2 @@
-# view.cumulative (auto generate by build_inits.py)
+# view.molecules (auto generate by build_inits.py)
 # flake8: noqa: F408
