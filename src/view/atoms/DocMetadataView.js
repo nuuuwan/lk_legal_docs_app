@@ -2,7 +2,7 @@ import { Box, Stack, Typography } from "@mui/material";
 import { STYLE } from "../../nonview/constants";
 export default function DocMetadataView({ doc }) {
   return (
-    <Box>
+    <Box sx={{ width: "100%" }}>
       <Typography variant="subtitle2" color={STYLE.COLOR.LIGHT}>
         {doc.date}
       </Typography>

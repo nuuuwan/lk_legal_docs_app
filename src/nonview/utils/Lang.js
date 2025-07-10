@@ -1,3 +1,4 @@
+import { STYLE } from "../constants";
 class Lang {
   constructor(code, name, color) {
     this.code = code;
@@ -14,8 +15,7 @@ class Lang {
   }
 }
 
-Lang.EN = new Lang("en", "English", "#080");
-Lang.SI = new Lang("si", "සිංහල", "#800");
-Lang.TA = new Lang("ta", "தமிழ்", "#f80");
-
+Lang.SI = new Lang("si", "සිංහල", STYLE.COLOR.SL_FLAG.MAROON);
+Lang.TA = new Lang("ta", "தமிழ்", STYLE.COLOR.SL_FLAG.ORANGE);
+Lang.EN = new Lang("en", "English", STYLE.COLOR.SL_FLAG.GREEN);
 export default Lang;
