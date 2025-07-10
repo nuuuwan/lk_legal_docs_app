@@ -22,7 +22,7 @@ export default class DocMetadata {
       d["doc_type_name"],
       d["id"],
       d["date"],
-      d["description"]
+      d["description"],
     );
   }
 
@@ -31,7 +31,7 @@ export default class DocMetadata {
     let docList = data.map(DocMetadata.fromDict);
     if (searchKey && searchKey.length >= 3) {
       docList = docList.filter((doc) =>
-        doc.description.toLowerCase().includes(searchKey.toLowerCase())
+        doc.description.toLowerCase().includes(searchKey.toLowerCase()),
       );
     }
 
