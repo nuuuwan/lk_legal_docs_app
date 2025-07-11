@@ -25,7 +25,7 @@ export default class App extends Component {
   render() {
     return (
       <ThemeProvider theme={THEME}>
-        <Box sx={{ width: "calc(min(640px, 95%))", margin: "0 auto" }}>
+        <Box sx={{ width: "calc(min(640px, 100%))", margin: "0 auto" }}>
           <HomePage />
           <VersionView />
         </Box>
