@@ -15,7 +15,7 @@ export default function DocMetadataView({ doc, largeTitle }) {
           {doc.docType.name}
         </Typography>
       </Stack>
-      <Typography variant={largeTitle ? "h4" : "subtitle1"}>
+      <Typography variant={largeTitle ? "h4" : "h6"}>
         {doc.description}
       </Typography>{" "}
       <Typography variant="caption" color={STYLE.COLOR.LIGHTER}>

@@ -1,7 +1,7 @@
 let STYLE = {};
 
 STYLE.FONT = {
-  SIZE: 16,
+  SIZE: 13,
   FAMILY: "Noto Sans",
 };
 
