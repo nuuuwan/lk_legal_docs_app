@@ -5,7 +5,7 @@ export default function SearchBox({ searchKey, docList, onChange }) {
     <Box sx={{ m: 1, p: 1 }}>
       <TextField
         variant="outlined"
-        placeholder="Search..."
+        placeholder="Search Documents"
         value={searchKey}
         onChange={(e) => onChange(e.target.value)}
         fullWidth
