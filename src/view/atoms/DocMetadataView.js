@@ -14,13 +14,12 @@ export default function DocMetadataView({ doc, largeTitle }) {
         <Typography variant="subtitle1" color={STYLE.COLOR.LIGHT}>
           {doc.docType.name}
         </Typography>
-
-        <Typography variant="subtitle1" color={STYLE.COLOR.LIGHTER}>
-          {doc.id}
-        </Typography>
       </Stack>
-      <Typography variant={largeTitle ? "h4" : "h6"}>
+      <Typography variant={largeTitle ? "h4" : "subtitle1"}>
         {doc.description}
+      </Typography>{" "}
+      <Typography variant="caption" color={STYLE.COLOR.LIGHTER}>
+        {doc.id}
       </Typography>
     </Box>
   );
