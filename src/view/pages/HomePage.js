@@ -48,7 +48,7 @@ export default class HomePage extends Component {
     this.setState({ searchKey, docList });
   }
 
-  renderInner() {
+  renderBody() {
     const { docList, doc } = this.state;
 
     if (docList === undefined) {
@@ -70,6 +70,6 @@ export default class HomePage extends Component {
   }
 
   render() {
-    return this.renderInner();
+    return this.renderBody();
   }
 }
