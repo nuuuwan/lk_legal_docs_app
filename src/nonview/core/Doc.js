@@ -34,7 +34,7 @@ export default class Doc {
     let docList = data.map(Doc.fromDict);
     if (searchKey && searchKey.length >= 3) {
       docList = docList.filter((doc) =>
-        doc.description.toLowerCase().includes(searchKey.toLowerCase())
+        doc.description.toLowerCase().includes(searchKey.toLowerCase()),
       );
     }
     return docList;
@@ -42,7 +42,7 @@ export default class Doc {
 
   static async listAllAsync(searchKey) {
     return await Promise.all(
-      Doc.DECADES.map((decade) => Doc.listAllForDecadeAsync(searchKey, decade))
+      Doc.DECADES.map((decade) => Doc.listAllForDecadeAsync(searchKey, decade)),
     ).then((lists) => {
       return lists.flat();
     });
@@ -74,18 +74,32 @@ export default class Doc {
   }
 
   // Remote Data
-  get remoteDataDirUrl() {
+  get commonUrlTail() {
     const branch = Doc.getBranchForDecade(this.decade);
+    return `/${branch}/data/${this.docTypeName}/${this.year}/${this.id}`;
+  }
+
+  get remoteDataDirUrl() {
     return (
       "https://github.com" +
       "/nuuuwan/lk_legal_docs_data" +
-      `/tree/${branch}` +
-      `/data/${this.docTypeName}/${this.year}/${this.id}`
+      "/tree" +
+      this.commonUrlTail
+    );
+  }
+
+  get remoteRawDataDirUrl() {
+    return (
+      "https://raw.githubusercontent.com" +
+      "/nuuuwan/lk_legal_docs_data" +
+      "/refs/heads" +
+      this.commonUrlTail
     );
   }
 
   async getRemoteTxt(langCode) {
-    const urlTxt = this.remoteDataDirUrl + `/${langCode}.txt`;
+    const urlTxt = this.remoteRawDataDirUrl + `/${langCode}.txt`;
+    console.debug(urlTxt);
     return await new WWW(urlTxt).text();
   }
 }
