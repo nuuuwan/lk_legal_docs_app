@@ -19,7 +19,7 @@ export default function DocRemoteMetadataView({ doc }) {
 
   const sourceUrlIDPrefix = doc.remoteMetadataURL.substring(
     0,
-    doc.remoteMetadataURL.length - 12
+    doc.remoteMetadataURL.length - 12,
   );
 
   return (

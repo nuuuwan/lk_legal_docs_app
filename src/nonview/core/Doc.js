@@ -28,7 +28,7 @@ export default class Doc {
     let docList = data.filter((d) => d["lang"] === "en").map(Doc.fromDict);
     if (searchKey && searchKey.length >= 3) {
       docList = docList.filter((doc) =>
-        doc.description.toLowerCase().includes(searchKey.toLowerCase())
+        doc.description.toLowerCase().includes(searchKey.toLowerCase()),
       );
     }
     return docList;
@@ -39,12 +39,12 @@ export default class Doc {
     for (const docType of DocType.listAll()) {
       const docsForType = await Doc.listAllAsyncForDocType(
         searchKey,
-        docType.DocType
+        docType.DocType,
       );
       allDocs = allDocs.concat(docsForType);
     }
     allDocs.sort(
-      (a, b) => b.date.localeCompare(a.date) || a.id.localeCompare(b.id)
+      (a, b) => b.date.localeCompare(a.date) || a.id.localeCompare(b.id),
     );
     return allDocs;
   }
