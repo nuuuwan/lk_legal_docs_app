@@ -17,10 +17,19 @@ export default function DocRemoteMetadataView({ doc }) {
     return <CircularProgress />;
   }
 
+  const sourceUrlIDPrefix = doc.remoteMetadataURL.substring(
+    0,
+    doc.remoteMetadataURL.length - 12
+  );
+
   return (
     <LangSourcesView
       doc={doc}
-      langCodeToSourceUrl={remoteMetadata["lang_to_source_url"]}
+      langCodeToSourceUrl={{
+        en: sourceUrlIDPrefix + "-en/doc.pdf",
+        si: sourceUrlIDPrefix + "-si/doc.pdf",
+        ta: sourceUrlIDPrefix + "-ta/doc.pdf",
+      }}
     />
   );
 }

@@ -14,10 +14,6 @@ export default class Doc {
     return new Doc(d["doc_type"], d["doc_id"], d["date_str"], d["description"]);
   }
 
-  static getBranchForDecade(decade) {
-    return `data_${decade}`;
-  }
-
   static getURLForDocType(docTypeName) {
     return (
       "https://raw.githubusercontent.com" +
@@ -29,7 +25,6 @@ export default class Doc {
   static async listAllAsyncForDocType(searchKey, docTypeName) {
     const url = Doc.getURLForDocType(docTypeName);
     const data = await new WWW(url).tsv();
-    console.debug(data[0]);
     let docList = data.filter((d) => d["lang"] === "en").map(Doc.fromDict);
     if (searchKey && searchKey.length >= 3) {
       docList = docList.filter((doc) =>
@@ -83,32 +78,28 @@ export default class Doc {
   }
 
   // Remote Data
-  get commonUrlTail() {
-    const branch = Doc.getBranchForDecade(this.decade);
-    return `/${branch}/data/${this.docTypeName}/${this.year}/${this.id}`;
-  }
 
   get remoteDataDirUrl() {
     return (
       "https://github.com" +
-      "/nuuuwan/lk_legal_docs_data" +
-      "/tree" +
-      this.commonUrlTail
+      "/nuuuwan/lk_legal_docs/tree" +
+      `/data_${this.docTypeName}/data/${this.docTypeName}` +
+      `/${this.decade}/${this.year}/${this.id}`
     );
   }
 
   get remoteRawDataDirUrl() {
     return (
       "https://raw.githubusercontent.com" +
-      "/nuuuwan/lk_legal_docs_data" +
-      "/refs/heads" +
-      this.commonUrlTail
+      "/nuuuwan/lk_legal_docs" +
+      "/refs/heads/" +
+      `data_${this.docTypeName}/data/${this.docTypeName}` +
+      `/${this.decade}/${this.year}/${this.id}`
     );
   }
 
   async getRemoteTxt(langCode) {
-    const urlTxt = this.remoteRawDataDirUrl + `/${langCode}.txt`;
-    console.debug(urlTxt);
+    const urlTxt = this.remoteRawDataDirUrl + "/doc.txt";
     return await new WWW(urlTxt).text();
   }
 }
