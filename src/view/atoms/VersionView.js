@@ -1,5 +1,5 @@
 import { Box, IconButton, Typography } from "@mui/material";
-import { VERSION } from "../../nonview/constants";
+import { VERSION } from "../../nonview/cons";
 import RefreshIcon from "@mui/icons-material/Refresh";
 export default function VersionView() {
   const onClick = function () {

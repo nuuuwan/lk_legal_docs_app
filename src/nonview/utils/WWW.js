@@ -43,4 +43,26 @@ export default class WWW {
       async () => await this.textHot(),
     );
   }
+
+  async tsvHot() {
+    const text = await this.textHot();
+    if (text === null) {
+      return null;
+    }
+    const lines = text.split("\n").filter((line) => line.trim() !== "");
+    const headers = lines[0].split("\t");
+    const data = lines.slice(1).map((line) => {
+      const values = line.split("\t");
+      const entry = {};
+      headers.forEach((header, index) => {
+        entry[header] = values[index];
+      });
+      return entry;
+    });
+    return data;
+  }
+
+  async tsv() {
+    return await Cache.get(this.url + ".tsv", async () => await this.tsvHot());
+  }
 }

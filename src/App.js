@@ -2,7 +2,7 @@ import { Component } from "react";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-import { STYLE } from "./nonview/constants";
+import { STYLE } from "./nonview/cons";
 import { Box } from "@mui/material";
 
 import { HomePage } from "./view/pages";

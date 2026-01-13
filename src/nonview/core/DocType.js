@@ -20,11 +20,11 @@ class DocType {
   }
 }
 
-DocType.ACT = new DocType("acts", "Act", "🏛️");
-DocType.BILL = new DocType("bills", "Bill", "✍️");
+DocType.ACT = new DocType("lk_acts", "Act", "🏛️");
+DocType.BILL = new DocType("lk_bills", "Bill", "✍️");
 DocType.GAZETTE = new DocType("gazettes", "Gazette", "📢");
 DocType.EXTRA_GAZETTE = new DocType(
-  "extra-gazettes",
+  "lk_extraordinary_gazettes",
   "Extraordinary Gazette",
   "🚨",
 );

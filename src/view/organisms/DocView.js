@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography, Divider } from "@mui/material";
-import { STYLE } from "../../nonview/constants";
+import { STYLE } from "../../nonview/cons";
 import { Lang } from "../../nonview/utils";
 import { DocMetadataView, ReturnToSearchButton } from "../atoms";
 import DocRemoteMetadataView from "./DocRemoteMetadataView";

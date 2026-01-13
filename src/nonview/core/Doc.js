@@ -11,42 +11,34 @@ export default class Doc {
   }
 
   static fromDict(d) {
-    return new Doc(d["doc_type_name"], d["id"], d["date"], d["description"]);
+    return new Doc(d["doc_type"], d["id"], d["date"], d["description"]);
   }
 
   static getBranchForDecade(decade) {
     return `data_${decade}`;
   }
 
-  static getURLAllForDecade(decade) {
-    const branch = Doc.getBranchForDecade(decade);
+  static getURLAll() {
+    const docTypeName = "lk_acts";
     return (
       "https://raw.githubusercontent.com" +
-      "/nuuuwan/lk_legal_docs_data" +
-      `/refs/heads/${branch}` +
-      "/all.json"
+      "/nuuuwan/lk_legal_docs/refs/heads" +
+      `/data_${docTypeName}/data/${docTypeName}/docs_all.tsv`
     );
   }
 
-  static async listAllForDecadeAsync(searchKey, decade) {
-    const url = Doc.getURLAllForDecade(decade);
-    const data = await new WWW(url).json();
-    let docList = data.map(Doc.fromDict);
+  static async listAllAsync(searchKey) {
+    const url = Doc.getURLAll();
+    const data = await new WWW(url).tsv();
+    let docList = data.filter((d) => d["lang"] === "en").map(Doc.fromDict);
     if (searchKey && searchKey.length >= 3) {
       docList = docList.filter((doc) =>
-        doc.description.toLowerCase().includes(searchKey.toLowerCase()),
+        doc.description.toLowerCase().includes(searchKey.toLowerCase())
       );
     }
     return docList;
   }
 
-  static async listAllAsync(searchKey) {
-    return await Promise.all(
-      Doc.DECADES.map((decade) => Doc.listAllForDecadeAsync(searchKey, decade)),
-    ).then((lists) => {
-      return lists.flat();
-    });
-  }
   get docType() {
     return DocType.fromDocTypeName(this.docTypeName);
   }
@@ -64,8 +56,10 @@ export default class Doc {
   get remoteMetadataURL() {
     return (
       "https://raw.githubusercontent.com" +
-      "/nuuuwan/lk_legal_docs/refs/heads/main" +
-      `/data/${this.docTypeName}/${this.year}/${this.id}/metadata.json`
+      "/nuuuwan/lk_legal_docs" +
+      "/refs/heads/" +
+      `data_${this.docTypeName}/data/${this.docTypeName}` +
+      `/${this.decade}/${this.year}/${this.id}/doc.json`
     );
   }
 

@@ -1,5 +1,5 @@
 import { Box, Stack, Typography, Avatar } from "@mui/material";
-import { STYLE } from "../../nonview/constants";
+import { STYLE } from "../../nonview/cons";
 export default function DocMetadataView({ doc, largeTitle }) {
   return (
     <Box sx={{ width: "100%", pb: 1 }}>

@@ -1,4 +1,4 @@
-import { STYLE } from "../constants";
+import { STYLE } from "../cons";
 class Lang {
   constructor(code, name, color) {
     this.code = code;
