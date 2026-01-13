@@ -11,15 +11,14 @@ export default class Doc {
   }
 
   static fromDict(d) {
-    return new Doc(d["doc_type"], d["id"], d["date"], d["description"]);
+    return new Doc(d["doc_type"], d["doc_id"], d["date_str"], d["description"]);
   }
 
   static getBranchForDecade(decade) {
     return `data_${decade}`;
   }
 
-  static getURLAll() {
-    const docTypeName = "lk_acts";
+  static getURLForDocType(docTypeName) {
     return (
       "https://raw.githubusercontent.com" +
       "/nuuuwan/lk_legal_docs/refs/heads" +
@@ -27,9 +26,10 @@ export default class Doc {
     );
   }
 
-  static async listAllAsync(searchKey) {
-    const url = Doc.getURLAll();
+  static async listAllAsyncForDocType(searchKey, docTypeName) {
+    const url = Doc.getURLForDocType(docTypeName);
     const data = await new WWW(url).tsv();
+    console.debug(data[0]);
     let docList = data.filter((d) => d["lang"] === "en").map(Doc.fromDict);
     if (searchKey && searchKey.length >= 3) {
       docList = docList.filter((doc) =>
@@ -37,6 +37,21 @@ export default class Doc {
       );
     }
     return docList;
+  }
+
+  static async listAllAsync(searchKey) {
+    let allDocs = [];
+    for (const docType of DocType.listAll()) {
+      const docsForType = await Doc.listAllAsyncForDocType(
+        searchKey,
+        docType.DocType
+      );
+      allDocs = allDocs.concat(docsForType);
+    }
+    allDocs.sort(
+      (a, b) => b.date.localeCompare(a.date) || a.id.localeCompare(b.id)
+    );
+    return allDocs;
   }
 
   get docType() {

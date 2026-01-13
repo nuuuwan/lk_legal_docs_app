@@ -6,12 +6,16 @@ class DocType {
   }
 
   static listAll() {
-    return [DocType.ACT, DocType.BILL, DocType.GAZETTE, DocType.EXTRA_GAZETTE];
+    return [
+      DocType.ACT,
+      DocType.BILL,
+      // DocType.GAZETTE, DocType.EXTRA_GAZETTE
+    ];
   }
 
   static fromDocTypeName(docTypeName) {
     const docType = DocType.listAll().find(
-      (docType) => docType.DocType === docTypeName,
+      (docType) => docType.DocType === docTypeName
     );
     if (!docType) {
       throw new Error(`DocType not found for name: ${docTypeName}`);
@@ -26,7 +30,7 @@ DocType.GAZETTE = new DocType("gazettes", "Gazette", "📢");
 DocType.EXTRA_GAZETTE = new DocType(
   "lk_extraordinary_gazettes",
   "Extraordinary Gazette",
-  "🚨",
+  "🚨"
 );
 
 export default DocType;
